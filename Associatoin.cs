@@ -28,11 +28,11 @@ namespace AssociationOfTroops
                 new Soldier("Бигль", "Автомат","Прапор", 36 )
             };
 
-            var unionSoldiers = soldiers2
-                .Union(soldiers1
-                .Where(soldier => soldier.Name.StartsWith("Б")));
+            soldiers2.AddRange(soldiers1.Where(soldier => soldier.Name.StartsWith("Б")));
 
-            foreach (var soldier in unionSoldiers)
+            soldiers1.RemoveAll(soldier => soldier.Name.StartsWith("Б"));
+
+            foreach (var soldier in soldiers2)
             {
                 Console.WriteLine(soldier.Name);
             }
