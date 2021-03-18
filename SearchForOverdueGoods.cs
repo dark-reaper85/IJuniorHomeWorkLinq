@@ -24,13 +24,15 @@ namespace OverdueGoods
                 new Cannedize("Бобы", 2014, 3),
             };
 
-            int currentYear = 2017;
+            int currentYear = 2019;
 
-            var Overduecannedizes = cannedizes.Where(cannedize => cannedize.ProductionYear + cannedize.ShelfLife < currentYear);
+            var overdueCannedizes = cannedizes.Where(cannedize => cannedize.ProductionYear + cannedize.ShelfLife < currentYear);
 
-            foreach (var cannedize in Overduecannedizes)
+            int overdueValue;
+            foreach (var cannedize in overdueCannedizes)
             {
-                Console.WriteLine($"{cannedize.Name}. Год выпуска: {cannedize.ProductionYear}. Просрочена на {currentYear - cannedize.ProductionYear - cannedize.ShelfLife} лет");
+                overdueValue = currentYear - cannedize.ProductionYear - cannedize.ShelfLife;
+                Console.WriteLine($"{cannedize.Name}. Год выпуска: {cannedize.ProductionYear}. Просрочена на {overdueValue} лет");
             }
         }
     }
