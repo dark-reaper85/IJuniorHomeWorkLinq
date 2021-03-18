@@ -30,12 +30,13 @@ namespace IJuniorHomeWorkLINQ
             string nationality = "Русский";
 
             var wantedCriminals = criminals
-                .Where(criminal => criminal.EnclosedInGuard == false)
-                .Where(criminal => criminal.Height >= minHeight)
-                .Where(criminal => criminal.Height <= maxHeight)
-                .Where(criminal => criminal.Weight >= minWeight)
-                .Where(criminal => criminal.Weight <= maxWeight)
-                .Where(criminal => criminal.Nationality == nationality);
+                .Where(criminal => 
+                criminal.EnclosedInGuard == false
+                && criminal.Height >= minHeight 
+                && criminal.Height <= maxHeight 
+                && criminal.Weight >= minWeight 
+                && criminal.Weight <= maxWeight 
+                && criminal.Nationality == nationality);
 
             foreach (var criminal in wantedCriminals)
             {
