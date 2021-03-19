@@ -27,13 +27,13 @@ namespace AssociationOfTroops
                 new Soldier("МакДак", "пистолет","рядовой", 86 ),
                 new Soldier("Бигль", "Автомат","Прапор", 36 )
             };
+            
+            var soldiersOnB = soldiers1
+                .Where(soldier => soldier.Name.StartsWith("Б"));
 
-            soldiers2 = soldiers2
-                .Union(soldiers1
-                .Where(soldier => soldier.Name.StartsWith("Б")))
-                .ToList();
+            soldiers2 = soldiers2.Union(soldiersOnB).ToList();
 
-            soldiers1 = soldiers1.Where(soldier => soldier.Name[0] != 'Б').ToList();
+            soldiers1 = soldiers1.Except(soldiersOnB).ToList();
 
             foreach (var soldier in soldiers2)
             {
